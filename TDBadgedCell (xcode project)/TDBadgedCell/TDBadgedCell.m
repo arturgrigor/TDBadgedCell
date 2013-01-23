@@ -151,7 +151,7 @@
 
 @implementation TDBadgedCell
 
-@synthesize badgeString, badge=__badge, badgeColor, badgeTextColor, badgeColorHighlighted, showShadow;
+@synthesize badgeString, badge=__badge, badgeColor, badgeTextColor, badgeColorHighlighted, badgetOffset, showShadow;
 
 #pragma mark - Init methods
 
@@ -199,9 +199,12 @@
 		
 		
 		CGSize badgeSize = [self.badgeString sizeWithFont:[UIFont boldSystemFontOfSize: self.badge.fontSize]];
-		CGRect badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 25),
-                                (CGFloat)round((self.contentView.frame.size.height - (badgeSize.height + (50/badgeSize.height))) / 2),
-                                badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
+		CGRect badgeframe = CGRectMake(
+                                           self.contentView.frame.size.width - (badgeSize.width + 25) + self.badgetOffset.x,
+                                           (CGFloat)round((self.contentView.frame.size.height - (badgeSize.height + (50/badgeSize.height))) / 2) + self.badgetOffset.y,
+                                           badgeSize.width + 13,
+                                           badgeSize.height + (50/badgeSize.height)
+                                       );
 		
         if(self.showShadow)
             [self.badge setShowShadow:YES];

@@ -113,6 +113,8 @@
         cell.showShadow = YES;
     }
     
+    cell.badgetOffset = CGPointMake(-53.f, 0);
+    
     return cell;
 }
 
